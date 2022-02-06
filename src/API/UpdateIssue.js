@@ -1,7 +1,7 @@
 import React, { PureComponent, useState, useEffect } from 'react';
 import { DragDropContext, Droppable, Draggable } from 'react-beautiful-dnd';
 
-const API_TOKEN = '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';
+const API_TOKEN = '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';
 
 const UpdateIssue = (issue_number, state) => {
   fetch(
@@ -10,7 +10,7 @@ const UpdateIssue = (issue_number, state) => {
       method: 'PATCH',
       headers: {
         'Content-Type': 'application/json',
-        Authorization: `Basic ${btoa('garlife' + ':' + API_TOKEN)}`,
+        Authorization: `Basic ${btoa('garlife' + ':' + API_TOKEN.toString())}`,
       },
       body: JSON.stringify({
         owner: 'garlife',
