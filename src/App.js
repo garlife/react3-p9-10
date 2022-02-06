@@ -37,10 +37,10 @@ const columnsFromBackend = {
   }
 };
 
-const API_TOKEN = "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";
+const API_TOKEN = "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";
 
 const updateItem = (issue_number, state) => {
-  fetch(`https://api.github.com/repos/{owner}/{repo}/issues/${issue_number}`, {
+  fetch(`https://api.github.com/repos/garlife/react3-p9-10/issues/${issue_number}`, {
     method: "PATCH",
     headers: {
       "Content-Type": "application/json",
@@ -52,12 +52,14 @@ const updateItem = (issue_number, state) => {
       "issue_number": issue_number,
       "state": state
     })
-});
+})
+};
 
 const onDragEnd = (result, columns, setColumns) => {
+  //console.log(result, columns)
   if (!result.destination) return;
   const { source, destination } = result;
-
+  // console.log(result, columns, source, destination )
   if (source.droppableId !== destination.droppableId) {
     const sourceColumn = columns[source.droppableId];
     const destColumn = columns[destination.droppableId];
@@ -89,6 +91,9 @@ const onDragEnd = (result, columns, setColumns) => {
       }
     });
   }
+  //console.log( result.draggableId, destination.droppableId )
+  updateItem(result.draggableId, destination.droppableId)
+  console.log( result.draggableId, destination.droppableId )
 };
 
 export default function App() {
@@ -172,5 +177,4 @@ export default function App() {
       </DragDropContext>
     </div>
   );
-}
 }
