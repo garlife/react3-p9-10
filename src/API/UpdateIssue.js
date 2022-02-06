@@ -1,7 +1,7 @@
 import React, { PureComponent, useState, useEffect } from 'react';
 import { DragDropContext, Droppable, Draggable } from 'react-beautiful-dnd';
 
-const API_TOKEN = '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';
+const API_TOKEN = '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';
 
 const UpdateIssue = (issue_number, state) => {
   fetch(

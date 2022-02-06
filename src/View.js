@@ -1,9 +1,15 @@
 import React, { PureComponent, useState, useEffect } from 'react';
 import { DragDropContext, Droppable, Draggable } from 'react-beautiful-dnd';
-import onDragEnd from "./onDragEnd"
+import onDragEnd from "./onDragEnd";
+import LoadData from "./API/LoadData"
 
+function View({columnsFromBackend}){
+const [columns, setColumns] = useState(columnsFromBackend);
 
-
+useEffect(() => {
+  LoadData(setColumns);
+}, []);
+return(
 <div className="Container" style={{ display: 'flex', justifyContent: 'center', height: '100%', }}>
       <DragDropContext
         onDragEnd={(result) => onDragEnd(result, columns, setColumns)}
@@ -79,3 +85,7 @@ import onDragEnd from "./onDragEnd"
         })}
       </DragDropContext>
     </div>
+    )
+    }
+
+    export default View;
